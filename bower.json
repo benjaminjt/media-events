@@ -1,0 +1,36 @@
+{
+  "name": "media-events",
+  "version": "0.0.1",
+  "homepage": "https://github.com/benjaminjt/media-events",
+  "authors": [
+    "benjaminjt <me@benjaminjt.com>"
+  ],
+  "description": "A lightweight, event based wrapper for Window.matchMedia()",
+  "keywords": [
+    "match",
+    "media",
+    "query",
+    "queries",
+    "mediaQuery",
+    "matchMedia",
+    "inline",
+    "style",
+    "styles",
+    "react"
+  ],
+  "main": "./dist/media-events.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

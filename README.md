@@ -1,2 +1,2 @@
 # media-events
-A lightweight wrapper for Window.matchMedia() with events
+A lightweight, event based wrapper for Window.matchMedia()
