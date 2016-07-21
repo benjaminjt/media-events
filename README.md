@@ -4,6 +4,10 @@
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
 
+[matchMedia-url]: https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+[MediaList-url]: https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListListener
+[compatability-table]: https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia#Browser_compatibility
+
 <img
   alt="Media Events Logo"
   src="https://raw.githubusercontent.com/benjaminjt/media-events/master/logo/media-events-logo.png"
@@ -45,6 +49,10 @@ else handleEveryElse();
 // Updates are easy to follow
 media.on('update', (state) => handleUpdate(state));
 
+// The media object just extends EventEmitter, so all the normal methods work
+media.once('update', (state) => handleOneUpdate(state));
+media.removeListener('update', handleUpdate);
+
 // This is great for React.js components
 media.on('update', (state) => this.setState({ mediaState: state }));
 
@@ -57,8 +65,21 @@ media.on('landscape', () => landscapeNow());
 
 // And just for symmetry
 media.on('not-small', () => notSmallNow());
+
+// Clean up
+media.destroy();
 ```
 
 ### Full Examples
 
 _coming soon..._
+
+### Dependencies
+
+Just `EventEmitter` from Node.js and the [Window.matchMedia][matchMedia-url] and
+[MediaQueryListListener][MediaList-url] APIs.
+
+### Compatability
+
+See the MDN compatibility table for Window.matchMedia:
+[https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia#Browser_compatibility][compatability-table]
