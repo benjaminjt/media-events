@@ -46,7 +46,7 @@ if (media.state.small) handleSmall();
 else if (!media.state.landscape) handlePortrait();
 else handleEveryElse();
 
-// Updates are easy to follow
+// Updates events are emitted every time something changes
 media.on('update', (state) => handleUpdate(state));
 
 // The media object just extends EventEmitter, so all the normal methods work
@@ -59,7 +59,7 @@ media.on('update', (state) => this.setState({ mediaState: state }));
 // Or for Flux/Redux/{Whatever}ux
 media.on('update', (state) => store.dispatch({ type: 'MEDIA_UPDATE', mediaState: state }));
 
-// Events are also emitted for when individual matches
+// Events are also emitted for when individual sub-queries match
 media.on('small', () => smallNow());
 media.on('landscape', () => landscapeNow());
 
