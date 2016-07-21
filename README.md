@@ -16,50 +16,49 @@
 Media events is a tiny library that makes javascript media queries easy; allowing you to write
 @media rules just as you would with CSS.
 
-__Simple as this:__
-```js
-const media = new MediaEvent({ small: 'max-width: 600px' });
+### Installation
 
-if (media.state.small) doSmallThings();
-else doBigThings();
+```bash
+npm install media-events --save
 ```
 
-__Something more complex:__
+or
+
+```bash
+bower media-events
+```
+
+### Quick Start
 
 ```js
+// Construct a media object like this
 const media = new MediaEvent({
-  small: 'max-width: 600px',
   landscape: 'orientation: landscape',
-  highRes: 'min-resolution: 300dpi',
+  small: 'max-width: 600px',
 });
 
-if (!media.state.small && media.state.highRes) handleLargeHighResScreens();
-```
+// Now the state can be inspected
+if (media.state.small) handleSmall();
+else if (!media.state.landscape) handlePortrait();
+else handleEveryElse();
 
-__Events are generated every time something changes:__
-```js
-media.on('update', (state) => {
-  if (state.small) handleSmallMedia();
-  else notSmall();
-});
-```
-__Events work great with React.js and Flux/Redux/{Whatever}ux:__
+// Updates are easy to follow
+media.on('update', (state) => handleUpdate(state));
 
-```js
-// Within a React.js component:
+// This is great for React.js components
 media.on('update', (state) => this.setState({ mediaState: state }));
 
-// Or anywhere with flux/redux:
+// Or for Flux/Redux/{Whatever}ux
 media.on('update', (state) => store.dispatch({ type: 'MEDIA_UPDATE', mediaState: state }));
-```
 
-__Events are also issued when a particular query's state changes to true:__
-```js
+// Events are also emitted for when individual matches
 media.on('small', () => smallNow());
 media.on('landscape', () => landscapeNow());
-```
 
-__And of course, when a query's state changes to false:__
-```js
+// And just for symmetry
 media.on('not-small', () => notSmallNow());
 ```
+
+### Full Examples
+
+_coming soon..._
