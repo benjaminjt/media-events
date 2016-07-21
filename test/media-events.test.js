@@ -7,11 +7,6 @@ import { assert } from 'chai';
 import MediaEvents from '../src/media-events.js';
 
 describe('MediaEvents', function () {
-  it('is a class', function () {
-    const mq = new MediaEvents({});
-    assert.instanceOf(mq, MediaEvents);
-  });
-
   it('accepts a query as an object only', function () {
     assert.doesNotThrow(() => new MediaEvents({}));
     assert.throws(
@@ -40,20 +35,14 @@ describe('MediaEvents', function () {
     );
   });
 
-  it('exposes equivalent #on and #addListener methods', function () {
-    const mq = new MediaEvents({});
-    assert.isFunction(mq.on);
-    assert.isFunction(mq.addListener);
-    assert.equal(mq.on, mq.addListener);
-  });
+  it('calls window.matchMedia with query string');
+  it('calls the addListener method on each MediaQueryList object');
+  it('emits an \'update\' event each time any MediaQueryListListener is called');
+  it('emits a \'<key>\' event when the associated MediaQueryList object updates to \'true\'');
+  it('emits a \'not-<key>\' event when the associated MediaQueryList object updates to \'false\'');
 
-  it('exposes a #removeListener method', function () {
-    const mq = new MediaEvents({});
-    assert.isFunction(mq.removeListener);
-  });
-
-  it('exposes a #destroy method', function () {
-    const mq = new MediaEvents({});
-    assert.isFunction(mq.destroy);
+  describe('#destroy', function () {
+    it('calls removeAllListeners on itself');
+    it('calls the removeListener method on each MediaQueryList object');
   });
 });
