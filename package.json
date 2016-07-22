@@ -4,12 +4,14 @@
   "description": "A lightweight, event based wrapper for Window.matchMedia()",
   "main": "dist/media-events.js",
   "scripts": {
-    "build-dev": "webpack",
-    "build-prod": "NODE_ENV=production webpack",
-    "build": "npm run build-dev && npm run build-prod",
-    "test-watch": "mocha ./test --compilers js:babel-core/register --require babel-polyfill --recursive --watch",
-    "test-dev": "mocha ./test --compilers js:babel-core/register --require babel-polyfill --recursive",
+    "build": "webpack",
+    "build-dev": "NODE_ENV=development npm run build",
+    "build-prod": "NODE_ENV=production npm run build",
+    "build-all": "npm run build-dev && npm run build-prod",
+    "test": "mocha ./test --compilers js:babel-core/register --require babel-polyfill --recursive",
+    "test-dev": "NODE_ENV=development mocha ./test --compilers js:babel-core/register --require babel-polyfill --recursive",
     "test-prod": "NODE_ENV=production mocha ./test --compilers js:babel-core/register --recursive",
+    "test-watch": "mocha ./test --compilers js:babel-core/register --require babel-polyfill --recursive --watch",
     "lint": "eslint ./src"
   },
   "repository": {
