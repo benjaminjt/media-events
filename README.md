@@ -37,8 +37,8 @@ bower media-events
 ```js
 // Construct a media object like this
 const media = new MediaEvent({
-  landscape: 'orientation: landscape',
-  small: 'max-width: 600px',
+  landscape: '(orientation: landscape)',
+  small: '(max-width: 600px)',
 });
 
 // Now the state can be inspected
